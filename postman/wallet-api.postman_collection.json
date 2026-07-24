@@ -1,0 +1,97 @@
+{
+  "info": {
+    "name": "Wallet API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080/api/v1" }
+  ],
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Marieme Diop\",\n  \"email\": \"marieme.diop@example.com\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/users", "host": ["{{baseUrl}}"], "path": ["users"] }
+          }
+        },
+        {
+          "name": "Get User",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/users/1", "host": ["{{baseUrl}}"], "path": ["users", "1"] }
+          }
+        },
+        {
+          "name": "List Users",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/users?page=0&size=10", "host": ["{{baseUrl}}"], "path": ["users"], "query": [{"key":"page","value":"0"},{"key":"size","value":"10"}] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Wallets",
+      "item": [
+        {
+          "name": "Create Wallet",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"solde\": 0,\n  \"devise\": \"XOF\",\n  \"userId\": 1\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/wallets", "host": ["{{baseUrl}}"], "path": ["wallets"] }
+          }
+        },
+        {
+          "name": "List Wallets by User",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/wallets/user/1", "host": ["{{baseUrl}}"], "path": ["wallets", "user", "1"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transactions",
+      "item": [
+        {
+          "name": "Create Deposit",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"DEPOT\",\n  \"montant\": 5000,\n  \"walletId\": 1\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/transactions", "host": ["{{baseUrl}}"], "path": ["transactions"] }
+          }
+        },
+        {
+          "name": "List Transactions by Wallet",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/transactions/wallet/1", "host": ["{{baseUrl}}"], "path": ["transactions", "wallet", "1"] }
+          }
+        },
+        {
+          "name": "Cancel Transaction",
+          "request": {
+            "method": "PATCH",
+            "url": { "raw": "{{baseUrl}}/transactions/1/annuler", "host": ["{{baseUrl}}"], "path": ["transactions", "1", "annuler"] }
+          }
+        }
+      ]
+    }
+  ]
+}
