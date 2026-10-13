@@ -11,8 +11,12 @@ public record UserCreationDto(
     @ValidNom
     String nom,
 
-    @NotBlank(message = "L'email est obligatoire")
+@NotBlank(message = "L'email est obligatoire")
     @ValidEmail
     @Size(max = 180)
-    String email
+    String email,
+
+    @NotBlank(message = "Le mot de passe est obligatoire")
+    @Size(min = 6, max = 100, message = "Le mot de passe doit contenir entre 6 et 100 caracteres")
+    String password
 ) {}

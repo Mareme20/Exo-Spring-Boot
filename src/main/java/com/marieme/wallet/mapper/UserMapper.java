@@ -3,31 +3,22 @@ package com.marieme.wallet.mapper;
 import com.marieme.wallet.dto.request.UserCreationDto;
 import com.marieme.wallet.dto.response.UserResponse;
 import com.marieme.wallet.entity.User;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
-@Component
-public class UserMapper {
+/**
+ * Mapper MapStruct pour l'entite User.
+ * Le mot de passe est encode via PasswordEncoderMapper.
+ */
+@Mapper(componentModel = "spring", uses = PasswordEncoderMapper.class)
+public interface UserMapper {
 
-    public User toEntity(UserCreationDto dto) {
-        if (dto == null) {
-            return null;
-        }
-        return User.builder()
-                .nom(dto.nom())
-                .email(dto.email())
-                .build();
-    }
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "wallets", ignore = true)
+    @Mapping(target = "password", source = "password", qualifiedByName = "encodePassword")
+    User toEntity(UserCreationDto dto);
 
-    public UserResponse toResponse(User user) {
-        if (user == null) {
-            return null;
-        }
-        return UserResponse.builder()
-                .id(user.getId())
-                .nom(user.getNom())
-                .email(user.getEmail())
-                .dateCreation(user.getDateCreation())
-                .nombreWallets(user.getWallets() == null ? 0 : user.getWallets().size())
-                .build();
-    }
+    @Mapping(target = "nombreWallets", expression = "java(user.getWallets() == null ? 0 : user.getWallets().size())")
+    UserResponse toResponse(User user);
 }

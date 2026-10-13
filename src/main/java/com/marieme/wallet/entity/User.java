@@ -28,8 +28,11 @@ public class User extends BaseEntity {
     @Column(nullable = false, length = 120)
     private String nom;
 
-    @Column(nullable = false, unique = true, length = 180)
+@Column(nullable = false, unique = true, length = 180)
     private String email;
+
+    @Column(nullable = false, length = 255)
+    private String password;
 
     @Builder.Default
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

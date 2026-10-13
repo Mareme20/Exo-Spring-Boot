@@ -4,20 +4,21 @@
 -- ============================================================
 -- Note : Les tables sont creees par Hibernate (ddl-auto: update)
 -- Ce script s'execute APRES la creation des tables
+-- Les mots de passe sont encodes en BCrypt (mot de passe : "123456")
 -- ============================================================
 
 -- ==================== UTILISATEURS ====================
-INSERT INTO users (nom, email, date_creation, date_mise_a_jour) VALUES
-('Marieme Diop',   'marieme.diop@email.com',   NOW(), NOW()),
-('Amadou Fall',    'amadou.fall@email.com',    NOW(), NOW()),
-('Fatou Sow',      'fatou.sow@email.com',      NOW(), NOW()),
-('Ousmane Ndiaye', 'ousmane.ndiaye@email.com', NOW(), NOW()),
-('Aicha Barry',    'aicha.barry@email.com',    NOW(), NOW()),
-('Cheikh Diallo',  'cheikh.diallo@email.com',  NOW(), NOW()),
-('Ndeye Ba',       'ndeye.ba@email.com',       NOW(), NOW()),
-('Ibrahima Kane',  'ibrahima.kane@email.com',  NOW(), NOW()),
-('Khady Gueye',    'khady.gueye@email.com',    NOW(), NOW()),
-('Modou Thioune',  'modou.thioune@email.com',  NOW(), NOW())
+INSERT INTO users (nom, email, password, date_creation, date_mise_a_jour) VALUES
+('Marieme Diop',   'marieme.diop@email.com',   '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', NOW(), NOW()),
+('Amadou Fall',    'amadou.fall@email.com',    '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', NOW(), NOW()),
+('Fatou Sow',      'fatou.sow@email.com',      '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', NOW(), NOW()),
+('Ousmane Ndiaye', 'ousmane.ndiaye@email.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', NOW(), NOW()),
+('Aicha Barry',    'aicha.barry@email.com',    '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', NOW(), NOW()),
+('Cheikh Diallo',  'cheikh.diallo@email.com',  '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', NOW(), NOW()),
+('Ndeye Ba',       'ndeye.ba@email.com',       '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', NOW(), NOW()),
+('Ibrahima Kane',  'ibrahima.kane@email.com',  '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', NOW(), NOW()),
+('Khady Gueye',    'khady.gueye@email.com',    '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', NOW(), NOW()),
+('Modou Thioune',  'modou.thioune@email.com',  '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', NOW(), NOW())
 ON CONFLICT (email) DO NOTHING;
 
 -- ==================== PORTEFEUILLES ====================

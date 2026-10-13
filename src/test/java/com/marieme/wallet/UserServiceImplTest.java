@@ -21,7 +21,7 @@ class UserServiceImplTest {
 
     @Test
     void shouldCreateUserSuccessfully() {
-        UserCreationDto dto = new UserCreationDto("Marieme Diop", "marieme.diop@example.com");
+        UserCreationDto dto = new UserCreationDto("Marieme Diop", "marieme.diop@example.com", "password123");
 
         UserResponse response = userService.create(dto);
 
@@ -32,7 +32,7 @@ class UserServiceImplTest {
 
     @Test
     void shouldRejectDuplicateEmail() {
-        UserCreationDto dto = new UserCreationDto("Fatou Sow", "fatou.sow@example.com");
+        UserCreationDto dto = new UserCreationDto("Fatou Sow", "fatou.sow@example.com", "password123");
         userService.create(dto);
 
         assertThatThrownBy(() -> userService.create(dto))

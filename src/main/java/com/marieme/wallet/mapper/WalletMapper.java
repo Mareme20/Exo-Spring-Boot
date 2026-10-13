@@ -4,33 +4,21 @@ import com.marieme.wallet.dto.request.WalletRequest;
 import com.marieme.wallet.dto.response.WalletResponse;
 import com.marieme.wallet.entity.User;
 import com.marieme.wallet.entity.Wallet;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-@Component
-public class WalletMapper {
+/**
+ * Mapper MapStruct pour l'entite Wallet.
+ */
+@Mapper(componentModel = "spring")
+public interface WalletMapper {
 
-    public Wallet toEntity(WalletRequest request, User user) {
-        if (request == null) {
-            return null;
-        }
-        return Wallet.builder()
-                .solde(request.getSolde())
-                .devise(request.getDevise())
-                .user(user)
-                .build();
-    }
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "transactions", ignore = true)
+    @Mapping(target = "user", source = "user")
+    Wallet toEntity(WalletRequest request, User user);
 
-    public WalletResponse toResponse(Wallet wallet) {
-        if (wallet == null) {
-            return null;
-        }
-        return WalletResponse.builder()
-                .id(wallet.getId())
-                .solde(wallet.getSolde())
-                .devise(wallet.getDevise())
-                .userId(wallet.getUser() != null ? wallet.getUser().getId() : null)
-                .userNom(wallet.getUser() != null ? wallet.getUser().getNom() : null)
-                .dateCreation(wallet.getDateCreation())
-                .build();
-    }
+    @Mapping(target = "userId", source = "user.id")
+    @Mapping(target = "userNom", source = "user.nom")
+    WalletResponse toResponse(Wallet wallet);
 }
