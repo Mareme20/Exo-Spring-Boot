@@ -5,8 +5,7 @@ import com.marieme.wallet.dto.response.UserResponse;
 import com.marieme.wallet.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Named;
-
+ 
 /**
  * Mapper MapStruct pour l'entite User.
  * Le mot de passe est encode via PasswordEncoderMapper.

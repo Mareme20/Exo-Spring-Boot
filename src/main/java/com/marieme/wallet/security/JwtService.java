@@ -1,6 +1,5 @@
 package com.marieme.wallet.security;
 
-import com.marieme.wallet.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;

@@ -2,9 +2,7 @@ package com.marieme.wallet.service.impl;
 
 import com.marieme.wallet.dto.request.LoginRequest;
 import com.marieme.wallet.dto.response.AuthResponse;
-import com.marieme.wallet.entity.User;
 import com.marieme.wallet.exception.BadRequestException;
-import com.marieme.wallet.repository.UserRepository;
 import com.marieme.wallet.security.CustomUserDetailsService;
 import com.marieme.wallet.security.JwtService;
 import com.marieme.wallet.service.AuthService;
